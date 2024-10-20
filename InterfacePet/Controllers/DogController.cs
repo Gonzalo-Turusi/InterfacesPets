@@ -24,6 +24,11 @@ namespace InterfacesPet.Controllers
         [HttpPost("add")]
         public ActionResult AddDog([FromBody] Dog newDog)
         {
+            if (newDog == null)
+            {
+                return BadRequest();
+            }
+
             _storage.Pets.Add(newDog);
             return Ok();
         }
